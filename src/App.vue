@@ -1,30 +1,45 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="docker">
+    <div class="docker__item ">
+      <span class="material-icons docker__icon">home</span>
+      首頁
+    </div>
+    <div class="docker__item">
+      <span class="material-icons docker__icon">shopping_cart</span>
+      購物車</div>
+    <div class="docker__item">
+      <span class="material-icons docker__icon">toc</span>
+      訂單
+    </div>
+    <div class="docker__item">
+      <span class="material-icons docker__icon">perm_identity</span>
+      我的
+    </div>
   </div>
-  <router-view/>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.docker {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 .18rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: .49rem;
+  border-top: 1px solid #f1f1f1;
+  background: green;
 }
 
-#nav {
-  padding: 30px;
+.docker__item {
+  flex: 1;
+  text-align: center;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.docker__icon {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
 }
 </style>
