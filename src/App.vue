@@ -1,10 +1,14 @@
 <template>
   <div>
     <div class="wrapper">
-      123
+      <div class="position">
+        <span class="material-icons wrapper__icon">room</span>
+        北京理工大學國防科技元2號樓10層北京理工大學國防科技元2號樓10層
+        <span class="material-icons position__notice">notifications</span>
+      </div>
     </div>
     <div class="docker">
-      <div class="docker__item ">
+      <div class="docker__item">
         <span class="material-icons iconfont">home</span>
         首頁
       </div>
@@ -24,13 +28,37 @@
 </template>
 
 <style lang="scss">
+@import './style/variables';
+@import './style/mixins';
+
 .wrapper {
   position: absolute;
   left: 0;
   top: 0;
   bottom: .5rem;
   right: 0;
-  background: blue;
+  padding: 0 .18rem;
+}
+.position {
+  color: $content-fontcolor;
+  position: relative;
+  padding: .16rem .24rem .16rem 0;
+  line-height: .22rem;
+  font-size: .16rem;
+  @include ellipsis;
+  .wrapper__icon {
+    position: relative;
+    box-sizing: border-box;
+    font-size: .2rem;
+    top: .04rem;
+    // vertical-align: text-bottom;
+  }
+  .position__notice {
+    position: absolute;
+    right: 0;
+    top: .19rem;
+    font-size: .2rem;
+  }
 }
 .docker {
   display: flex;
@@ -41,8 +69,8 @@
   bottom: 0;
   width: 100%;
   height: .49rem;
+  color: $content-fontcolor;
   border-top: 1px solid #f1f1f1;
-  // background: green;
   &__item {
     flex: 1;
     text-align: center;
