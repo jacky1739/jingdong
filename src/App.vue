@@ -7,8 +7,9 @@
         <span class="material-icons position__notice">notifications</span>
       </div>
     </div>
+    <!-- BEM block element modifier block裡面的element是靠著下底線連結  -->
     <div class="docker">
-      <div class="docker__item">
+      <div class="docker__item docker__item--active">
         <span class="material-icons iconfont">home</span>
         首頁
       </div>
@@ -81,6 +82,9 @@
     justify-content: center;
     }
   }
+}
+.docker__item--active {
+  color: $docker-itemcolor;
 }
 
 </style>
