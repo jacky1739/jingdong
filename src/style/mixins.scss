@@ -1,0 +1,6 @@
+// 讓文字超出使用點點點表示的三劍客
+@mixin ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
