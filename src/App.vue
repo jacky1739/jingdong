@@ -13,6 +13,49 @@
       <div class="banner">
         <img class="banner__img" src="http://www.dell-lee.com/imgs/vue3/banner.jpg" alt="">
       </div>
+      <div class="icons">
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/超市.png" alt="">
+          <p class="icons__item__desc">超市便利</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/菜市场.png" alt="">
+          <p class="icons__item__desc">菜市场</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/水果店.png" alt="">
+          <p class="icons__item__desc">水果店</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/鲜花.png" alt="">
+          <p class="icons__item__desc">鲜花绿植</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/医药健康.png" alt="">
+          <p class="icons__item__desc">医药健康</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/家居.png" alt="">
+          <p class="icons__item__desc">家居时尚</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/蛋糕.png" alt="">
+          <p class="icons__item__desc">蛋糕</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/签到.png" alt="">
+          <p class="icons__item__desc">签到</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/大牌免运.png" alt="">
+          <p class="icons__item__desc">大牌免运</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/红包.png" alt="">
+          <p class="icons__item__desc">红包</p>
+        </div>
+      </div>
+      <div class="gap"></div>
     </div>
     <!-- BEM block element modifier block裡面的element是靠著下底線連結  -->
     <div class="docker">
@@ -100,7 +143,7 @@
   width: 100%;
   height: .49rem;
   color: $content-fontcolor;
-  border-top: 1px solid #f1f1f1;
+  border-top: 1px solid $content-bgColor;
   &__item {
     flex: 1;
     text-align: center;
@@ -114,6 +157,30 @@
 }
 .docker__item--active {
   color: $docker-itemcolor;
+}
+.icons {
+  margin-top: .16rem;
+  display: flex;
+  flex-wrap: wrap;
+  &__item {
+    width: 20%;
+    &__img {
+      display: block;
+      width: .4rem;
+      height: .4rem;
+      margin: 0 auto;
+    }
+    &__desc {
+      color: $content-fontcolor;
+      margin: .06rem 0 .16rem 0;
+      text-align: center;
+    }
+  }
+}
+.gap {
+  margin: 0 -.18rem;
+  height: .1rem;
+  background-color: $content-bgColor;
 }
 
 </style>
