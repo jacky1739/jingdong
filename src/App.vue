@@ -10,6 +10,9 @@
         <span class="material-icons search__icon">search</span>
         山姆會員商店優惠商品
       </div>
+      <div class="banner">
+        <img class="banner__img" src="http://www.dell-lee.com/imgs/vue3/banner.jpg" alt="">
+      </div>
     </div>
     <!-- BEM block element modifier block裡面的element是靠著下底線連結  -->
     <div class="docker">
@@ -66,6 +69,7 @@
   }
 }
 .search {
+  margin-bottom: .12rem;
   line-height: .32rem;
   background: #F5F5F5;
   color: #B7B7B7;
@@ -76,6 +80,14 @@
     display: inline-block;
     vertical-align: text-bottom;
     font-size: .2rem;
+  }
+}
+.banner {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 25.4%;
+  &__img {
+    width: 100%;
   }
 }
 .docker {
