@@ -6,6 +6,10 @@
         北京理工大學國防科技元2號樓10層北京理工大學國防科技元2號樓10層
         <span class="material-icons position__notice">notifications</span>
       </div>
+      <div class="search">
+        <span class="material-icons search__icon">search</span>
+        山姆會員商店優惠商品
+      </div>
     </div>
     <!-- BEM block element modifier block裡面的element是靠著下底線連結  -->
     <div class="docker">
@@ -58,6 +62,19 @@
     position: absolute;
     right: 0;
     top: .19rem;
+    font-size: .2rem;
+  }
+}
+.search {
+  line-height: .32rem;
+  background: #F5F5F5;
+  color: #B7B7B7;
+  border-radius: .16rem;
+  font-size: .14rem;
+  .search__icon {
+    padding: 0 .08rem 0 .16rem;
+    display: inline-block;
+    vertical-align: text-bottom;
     font-size: .2rem;
   }
 }
