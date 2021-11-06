@@ -29,8 +29,6 @@
 </template>
 
 <style lang="scss">
-<<<<<<< HEAD
-=======
 @import './style/variables';
 @import './style/mixins';
 
@@ -89,5 +87,4 @@
   color: $docker-itemcolor;
 }
 
->>>>>>> 163a6586c19deb158ee116b1c8f18092820f0325
 </style>
