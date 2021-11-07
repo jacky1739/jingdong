@@ -67,7 +67,55 @@
               <span class="nearby__content__tag">月售1万+</span>
               <span class="nearby__content__tag">月售1万+</span>
             </div>
-            <p class="nearby__content__hightlight">vip 尊享满89元减4元运费券 (每月3张)</p>
+            <p class="nearby__content__highlight">vip 尊享满89元减4元运费券 (每月3张)</p>
+          </div>
+        </div>
+        <div class="nearby__item">
+          <img class="nearby__item__img" src="http://www.dell-lee.com/imgs/vue3/near.png" alt="">
+          <div class="nearby__content">
+            <div class="nearby__content__title">沃尔玛</div>
+            <div class="nearby__content__tags">
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+            </div>
+            <p class="nearby__content__highlight">vip 尊享满89元减4元运费券 (每月3张)</p>
+          </div>
+        </div>
+        <div class="nearby__item">
+          <img class="nearby__item__img" src="http://www.dell-lee.com/imgs/vue3/near.png" alt="">
+          <div class="nearby__content">
+            <div class="nearby__content__title">沃尔玛</div>
+            <div class="nearby__content__tags">
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+            </div>
+            <p class="nearby__content__highlight">vip 尊享满89元减4元运费券 (每月3张)</p>
+          </div>
+        </div>
+        <div class="nearby__item">
+          <img class="nearby__item__img" src="http://www.dell-lee.com/imgs/vue3/near.png" alt="">
+          <div class="nearby__content">
+            <div class="nearby__content__title">沃尔玛</div>
+            <div class="nearby__content__tags">
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+            </div>
+            <p class="nearby__content__highlight">vip 尊享满89元减4元运费券 (每月3张)</p>
+          </div>
+        </div>
+        <div class="nearby__item">
+          <img class="nearby__item__img" src="http://www.dell-lee.com/imgs/vue3/near.png" alt="">
+          <div class="nearby__content">
+            <div class="nearby__content__title">沃尔玛</div>
+            <div class="nearby__content__tags">
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+            </div>
+            <p class="nearby__content__highlight">vip 尊享满89元减4元运费券 (每月3张)</p>
           </div>
         </div>
       </div>
@@ -98,6 +146,7 @@
 @import './style/mixins';
 
 .wrapper {
+  overflow-y: auto;
   position: absolute;
   left: 0;
   top: 0;
@@ -200,6 +249,42 @@
 .nearby {
   &__title {
     margin: .16rem 0 .14rem 0;
+    font-size: .18rem;
+    color: $content-fontcolor;
+  }
+  &__item {
+    display: flex;
+    padding-top: .12rem 0;
+    &__img {
+      margin-right: .16rem;
+      width: .56rem;
+      height: .56rem;
+    }
+  }
+  &__content {
+    flex: 1;
+    border-bottom: 1px solid $content-bgColor;
+    margin-bottom: .12rem;
+    &__title {
+      line-height: .22rem;
+      font-size: .16rem;
+      color: $content-fontcolor;
+    }
+    &__tags {
+      padding-top: .08rem;
+      line-height: .18rem;
+      font-size: .13rem;
+      color: $content-fontcolor;
+    }
+    &__tag {
+      margin-right: .16rem;
+    }
+    &__highlight {
+      padding-top: .08rem 0 0 0;
+      line-height: .18rem;
+      font-size: .13rem;
+      color: #E93B3B;
+    }
   }
 }
 
