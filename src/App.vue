@@ -7,7 +7,69 @@
         <span class="material-icons position__notice">notifications</span>
       </div>
       <div class="search">
-        山姆会员商店优惠商品
+        <span class="material-icons search__icon">search</span>
+        山姆會員商店優惠商品
+      </div>
+      <div class="banner">
+        <img class="banner__img" src="http://www.dell-lee.com/imgs/vue3/banner.jpg" alt="">
+      </div>
+      <div class="icons">
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/超市.png" alt="">
+          <p class="icons__item__desc">超市便利</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/菜市场.png" alt="">
+          <p class="icons__item__desc">菜市场</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/水果店.png" alt="">
+          <p class="icons__item__desc">水果店</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/鲜花.png" alt="">
+          <p class="icons__item__desc">鲜花绿植</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/医药健康.png" alt="">
+          <p class="icons__item__desc">医药健康</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/家居.png" alt="">
+          <p class="icons__item__desc">家居时尚</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/蛋糕.png" alt="">
+          <p class="icons__item__desc">蛋糕</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/签到.png" alt="">
+          <p class="icons__item__desc">签到</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/大牌免运.png" alt="">
+          <p class="icons__item__desc">大牌免运</p>
+        </div>
+        <div class="icons__item">
+          <img class="icons__item__img" src="http://www.dell-lee.com/imgs/vue3/红包.png" alt="">
+          <p class="icons__item__desc">红包</p>
+        </div>
+      </div>
+      <div class="gap"></div>
+      <div class="nearby">
+        <h3 class="nearby__title">附近店铺</h3>
+        <div class="nearby__item">
+          <img class="nearby__item__img" src="http://www.dell-lee.com/imgs/vue3/near.png" alt="">
+          <div class="nearby__content">
+            <div class="nearby__content__title">沃尔玛</div>
+            <div class="nearby__content__tags">
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+            </div>
+            <p class="nearby__content__hightlight">vip 尊享满89元减4元运费券 (每月3张)</p>
+          </div>
+        </div>
       </div>
     </div>
     <!-- BEM block element modifier block裡面的element是靠著下底線連結  -->
@@ -65,8 +127,26 @@
   }
 }
 .search {
+  margin-bottom: .12rem;
   line-height: .32rem;
-  color: #F5F5F5;
+  background: #F5F5F5;
+  color: #B7B7B7;
+  border-radius: .16rem;
+  font-size: .14rem;
+  .search__icon {
+    padding: 0 .08rem 0 .16rem;
+    display: inline-block;
+    vertical-align: text-bottom;
+    font-size: .2rem;
+  }
+}
+.banner {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 25.4%;
+  &__img {
+    width: 100%;
+  }
 }
 .docker {
   display: flex;
@@ -78,7 +158,7 @@
   width: 100%;
   height: .49rem;
   color: $content-fontcolor;
-  border-top: 1px solid #f1f1f1;
+  border-top: 1px solid $content-bgColor;
   &__item {
     flex: 1;
     text-align: center;
@@ -92,6 +172,35 @@
 }
 .docker__item--active {
   color: $docker-itemcolor;
+}
+.icons {
+  margin-top: .16rem;
+  display: flex;
+  flex-wrap: wrap;
+  &__item {
+    width: 20%;
+    &__img {
+      display: block;
+      width: .4rem;
+      height: .4rem;
+      margin: 0 auto;
+    }
+    &__desc {
+      color: $content-fontcolor;
+      margin: .06rem 0 .16rem 0;
+      text-align: center;
+    }
+  }
+}
+.gap {
+  margin: 0 -.18rem;
+  height: .1rem;
+  background-color: $content-bgColor;
+}
+.nearby {
+  &__title {
+    margin: .16rem 0 .14rem 0;
+  }
 }
 
 </style>
