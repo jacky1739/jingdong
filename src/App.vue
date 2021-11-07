@@ -56,6 +56,21 @@
         </div>
       </div>
       <div class="gap"></div>
+      <div class="nearby">
+        <h3 class="nearby__title">附近店铺</h3>
+        <div class="nearby__item">
+          <img class="nearby__item__img" src="http://www.dell-lee.com/imgs/vue3/near.png" alt="">
+          <div class="nearby__content">
+            <div class="nearby__content__title">沃尔玛</div>
+            <div class="nearby__content__tags">
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+              <span class="nearby__content__tag">月售1万+</span>
+            </div>
+            <p class="nearby__content__hightlight">vip 尊享满89元减4元运费券 (每月3张)</p>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- BEM block element modifier block裡面的element是靠著下底線連結  -->
     <div class="docker">
@@ -181,6 +196,11 @@
   margin: 0 -.18rem;
   height: .1rem;
   background-color: $content-bgColor;
+}
+.nearby {
+  &__title {
+    margin: .16rem 0 .14rem 0;
+  }
 }
 
 </style>
