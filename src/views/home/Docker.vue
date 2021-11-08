@@ -1,23 +1,8 @@
 <template>
   <div class="docker">
-    <!-- <div class="docker__item docker__item--active">
-      <span class="material-icons iconfont">home</span>
-      首頁
-    </div>
-    <div class="docker__item">
-      <span class="material-icons iconfont">shopping_cart</span>
-      購物車</div>
-    <div class="docker__item">
-      <span class="material-icons iconfont">toc</span>
-      訂單
-    </div>
-    <div class="docker__item">
-      <span class="material-icons iconfont">perm_identity</span>
-      我的
-    </div> -->
     <div class="docker__item docker__item--active" v-for="item in dockList" :key="item">
       <span class="material-icons iconfont">{{ item.icon }}</span>
-      {{ item.name }}
+      {{ item.text }}
     </div>
   </div>
 </template>
@@ -29,19 +14,19 @@ export default {
     const dockList = [
       {
         icon: 'home',
-        name: 'home'
+        text: 'home'
       },
       {
         icon: 'shopping_cart',
-        name: '購物車'
+        text: '購物車'
       },
       {
         icon: 'toc',
-        name: '訂單'
+        text: '訂單'
       },
       {
         icon: 'perm_identity',
-        name: '我的'
+        text: '我的'
       }
     ]
 
