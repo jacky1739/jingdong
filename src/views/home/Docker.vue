@@ -1,6 +1,6 @@
 <template>
   <div class="docker">
-    <div class="docker__item docker__item--active" v-for="item in dockList" :key="item">
+    <div class="docker__item" :class="{ 'docker__item': true, 'docker__item--active': index === 0 }" v-for="( item, index ) in dockList" :key="item">
       <span class="material-icons iconfont">{{ item.icon }}</span>
       {{ item.text }}
     </div>
