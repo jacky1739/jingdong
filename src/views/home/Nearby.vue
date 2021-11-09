@@ -3,15 +3,13 @@
     <div class="nearby">
       <h3 class="nearby__title">附近店铺</h3>
       <div class="nearby__item" v-for="item in nearbyList" :key="item">
-        <img class="nearby__item__img" :src="item.src" alt="">
+        <img class="nearby__item__img" :src="item.imgUrl" alt="">
         <div class="nearby__content">
           <div class="nearby__content__title">{{ item.title }}</div>
           <div class="nearby__content__tags">
-            <span class="nearby__content__tag">{{ item.title }}</span>
-            <span class="nearby__content__tag">{{ item.title }}</span>
-            <span class="nearby__content__tag">{{ item.title }}</span>
+            <span class="nearby__content__tag" v-for="item in item.tag" :key="item">{{ item }}</span>
           </div>
-          <p class="nearby__content__highlight">{{ item.htghlisht }}</p>
+          <p class="nearby__content__highlight">{{ item.desc }}</p>
         </div>
       </div>
     </div>
@@ -24,34 +22,16 @@ export default {
   setup () {
     const nearbyList = [
       {
-        src: 'http://www.dell-lee.com/imgs/vue3/near.png',
+        imgUrl: 'http://www.dell-lee.com/imgs/vue3/near.png',
         title: '沃尔玛',
-        tag: '月售1万+',
-        htghlisht: 'vip 尊享满89元减4元运费券 (每月3张)'
+        tag: ['月售1万+', '起送¥0', '基础运费¥5'],
+        desc: 'vip 尊享满89元减4元运费券 (每月3张)'
       },
       {
-        src: 'http://www.dell-lee.com/imgs/vue3/near.png',
+        imgUrl: 'http://www.dell-lee.com/imgs/vue3/near.png',
         title: '沃尔玛',
-        tag: '月售1万+',
-        htghlisht: 'vip 尊享满89元减4元运费券 (每月3张)'
-      },
-      {
-        src: 'http://www.dell-lee.com/imgs/vue3/near.png',
-        title: '沃尔玛',
-        tag: '月售1万+',
-        htghlisht: 'vip 尊享满89元减4元运费券 (每月3张)'
-      },
-      {
-        src: 'http://www.dell-lee.com/imgs/vue3/near.png',
-        title: '沃尔玛',
-        tag: '月售1万+',
-        htghlisht: 'vip 尊享满89元减4元运费券 (每月3张)'
-      },
-      {
-        src: 'http://www.dell-lee.com/imgs/vue3/near.png',
-        title: '沃尔玛',
-        tag: '月售1万+',
-        htghlisht: 'vip 尊享满89元减4元运费券 (每月3张)'
+        tag: ['月售1万+', '起送¥0', '基础运费¥5'],
+        desc: 'vip 尊享满89元减4元运费券 (每月3张)'
       }
     ]
 
