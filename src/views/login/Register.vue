@@ -7,16 +7,29 @@
     <div class="wrapper__input">
         <input class="wrapper__input__coontent" type="password" placeholder="請輸入密碼">
     </div>
-    <div class="wrapper__login-button">登入</div>
+    <div class="wrapper__input">
+        <input class="wrapper__input__coontent" type="password" placeholder="確認密碼">
+    </div>
+    <div class="wrapper__login-button">註冊</div>
     <div class="wrapper__login-link">
-      <router-link :to="'/register'">立即註冊</router-link>
+      <router-link :to="'/login'">已有帳號去登錄</router-link>
     </div>
   </div>
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
+
 export default {
-  name: 'Login'
+  name: 'Login',
+  setup () {
+    const router = useRouter()
+    const handleClick = () => {
+      router.push({ name: 'Login' })
+    }
+
+    return { handleClick }
+  }
 }
 </script>
 
