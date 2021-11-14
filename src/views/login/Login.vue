@@ -2,10 +2,10 @@
   <div class="wrapper">
     <img class="wrapper__img" src="http://www.dell-lee.com/imgs/vue3/user.png" alt="">
     <div class="wrapper__input">
-        <input class="wrapper__input__coontent" type="text" placeholder="請輸入手機號碼">
+        <input class="wrapper__input__content" type="text" placeholder="請輸入手機號碼">
     </div>
     <div class="wrapper__input">
-        <input class="wrapper__input__coontent" type="password" placeholder="請輸入密碼">
+        <input class="wrapper__input__content" type="password" placeholder="請輸入密碼">
     </div>
     <div class="wrapper__login-button">登入</div>
     <div class="wrapper__login-link">
@@ -41,7 +41,7 @@ export default {
       background: #F9F9F9;
       border: 1px solid rbga(0,0,0,0.10);
       border-radius: 6px;
-      &__coontent {
+      &__content {
           line-height: .48rem;
           border: none;
           outline: none;
