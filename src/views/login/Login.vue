@@ -5,7 +5,7 @@
         <input class="wrapper__input__content" type="text" placeholder="請輸入用戶名" v-model="username">
     </div>
     <div class="wrapper__input">
-        <input class="wrapper__input__content" type="password" placeholder="請輸入密碼" v-model="password">
+        <input class="wrapper__input__content" type="password" placeholder="請輸入密碼" v-model="password" autocomplete="new-password">
     </div>
     <div class="wrapper__login-button" @click="handleLogin">登入</div>
     <div class="wrapper__login-link">
@@ -26,26 +26,37 @@ export default {
   components: { Toast },
   setup () {
     const router = useRouter()
+    // 登陸資料
     const data = reactive({
       username: '',
       password: ''
     })
-    const { show, toastMessage, showToast } = useToastEffect()
     const { username, password } = toRefs(data)
+    // toast 邏輯
+    const { show, toastMessage, showToast } = useToastEffect()
 
+    // 登陸邏輯
     const handleLogin = async () => {
       try {
-        const result = await post('/api/user/login', {
-          username: data.username,
-          password: data.password
-        })
-        if (result.errno === 0) {
-          localStorage.isLogin = true
-          router.push({ name: 'Home' })
-          showToast('登陸成功')
-          console.log(toastMessage)
+        const { username, password } = data
+        // 判斷登陸資料是否完整
+        if (username === '' || password === '') {
+          return showToast('請輸入帳號和密碼')
         } else {
-          showToast('登陆失败')
+          // 使用 axios 發送登陸資料
+          const result = await post('/api/user/login', {
+            username: data.username,
+            password: data.password
+          })
+          // 判斷回傳資料邏輯
+          if (result.errno === 0) {
+            localStorage.isLogin = true
+            router.push({ name: 'Home' })
+            showToast('登陸成功')
+            console.log(toastMessage)
+          } else {
+            showToast('登陆失败')
+          }
         }
       } catch (e) {
         showToast('请求失败')

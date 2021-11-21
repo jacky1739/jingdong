@@ -6,10 +6,10 @@
     </div>
     <Toast v-if="show" :message="toastMessage" />
     <div class="wrapper__input">
-        <input class="wrapper__input__coontent" type="password" placeholder="請輸入密碼" v-model="password">
+        <input class="wrapper__input__coontent" type="password" placeholder="請輸入密碼" v-model="password" autocomplete="new-password">
     </div>
     <div class="wrapper__input">
-        <input class="wrapper__input__coontent" type="password" placeholder="確認密碼" v-model="confirmPassword">
+        <input class="wrapper__input__coontent" type="password" placeholder="確認密碼" v-model="ensurement">
     </div>
     <div class="wrapper__login-button" @click="handleRegister">註冊</div>
     <div class="wrapper__login-link">
@@ -30,37 +30,48 @@ export default {
   setup () {
     const router = useRouter()
     const { show, toastMessage, showToast } = useToastEffect()
+    // 註冊相關data
     const data = reactive({
       username: '',
       password: '',
-      confirmPassword: ''
+      ensurement: ''
     })
-    const { username, password, confirmPassword } = toRefs(data)
+    const { username, password, ensurement } = toRefs(data)
 
+    // router 跳轉頁面
     const handleClick = () => {
       router.push({ name: 'Login' })
     }
 
+    // axios 取得資料相關邏輯
     const handleRegister = async () => {
-      try {
-        const result = await post('/api/user/register', {
-          username: data.username,
-          password: data.password
-        })
-        console.log(result.errno)
-        if (result.errno === 0) {
-          localStorage.isLogin = true
-          router.push({ name: 'Login' })
-          showToast('登陸成功')
-        } else {
-          showToast('请求失败')
+      const { username, password, ensurement } = data
+      // 判斷註冊資料是否完整
+      if (username === '' || password === '' || ensurement === '') {
+        return showToast('請輸入完整資料')
+      } else {
+        try {
+          // 使用 axios 發送註冊資料
+          const result = await post('/api/user/register', {
+            username: data.username,
+            password: data.password
+          })
+          console.log(result.errno)
+          // 判斷回傳資料邏輯
+          if (result.errno === 0) {
+            localStorage.isLogin = true
+            router.push({ name: 'Login' })
+            showToast('註冊成功')
+          } else {
+            showToast('註冊失败')
+          }
+        } catch {
+          showToast('註冊失败')
         }
-      } catch {
-        showToast('请求失败')
       }
     }
 
-    return { handleClick, show, toastMessage, showToast, handleRegister, username, password, confirmPassword }
+    return { handleClick, handleRegister, show, toastMessage, showToast, username, password, ensurement }
   }
 }
 </script>
