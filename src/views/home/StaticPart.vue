@@ -10,7 +10,7 @@
         山姆會員商店優惠商品
       </div>
       <div class="banner">
-        <img class="banner__img" src="http://www.dell-lee.com/imgs/vue3/banner.jpg" alt="">
+        <img class="banner__img" src="../../../public/images/banner.jpg" alt="">
       </div>
       <div class="icons">
         <div class="icons__item" v-for="item in staticPartList" :key="item">
