@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
-    <img class="wrapper__img" src="http://www.dell-lee.com/imgs/vue3/user.png" alt="">
+    <!-- <img class="wrapper__img" src="http://www.dell-lee.com/imgs/vue3/user.png" alt=""> -->
+    <img class="wrapper__img" src="../../../public/images/banner.jpg" alt="">
     <div class="wrapper__input">
         <input class="wrapper__input__content" type="text" placeholder="請輸入用戶名" v-model="username">
     </div>
