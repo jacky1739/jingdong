@@ -2,15 +2,16 @@
   <div class="wrapper">
     <img class="wrapper__img" src="http://www.dell-lee.com/imgs/vue3/user.png" alt="">
     <div class="wrapper__input">
-        <input class="wrapper__input__coontent" type="text" placeholder="請輸入手機號碼">
+        <input class="wrapper__input__coontent" type="text" placeholder="請輸入手機號碼" v-model="username">
+    </div>
+    <Toast v-if="show" :message="toastMessage" />
+    <div class="wrapper__input">
+        <input class="wrapper__input__coontent" type="password" placeholder="請輸入密碼" v-model="password">
     </div>
     <div class="wrapper__input">
-        <input class="wrapper__input__coontent" type="password" placeholder="請輸入密碼">
+        <input class="wrapper__input__coontent" type="password" placeholder="確認密碼" v-model="confirmPassword">
     </div>
-    <div class="wrapper__input">
-        <input class="wrapper__input__coontent" type="password" placeholder="確認密碼">
-    </div>
-    <div class="wrapper__login-button">註冊</div>
+    <div class="wrapper__login-button" @click="handleRegister">註冊</div>
     <div class="wrapper__login-link">
       <router-link :to="'/login'">已有帳號去登錄</router-link>
     </div>
@@ -19,16 +20,47 @@
 
 <script>
 import { useRouter } from 'vue-router'
+import { post } from '../../utils/request'
+import { reactive, toRefs } from 'vue'
+import Toast, { useToastEffect } from '../../components/Toast'
 
 export default {
   name: 'Login',
+  components: { Toast },
   setup () {
     const router = useRouter()
+    const { show, toastMessage, showToast } = useToastEffect()
+    const data = reactive({
+      username: '',
+      password: '',
+      confirmPassword: ''
+    })
+    const { username, password, confirmPassword } = toRefs(data)
+
     const handleClick = () => {
       router.push({ name: 'Login' })
     }
 
-    return { handleClick }
+    const handleRegister = async () => {
+      try {
+        const result = await post('/api/user/register', {
+          username: data.username,
+          password: data.password
+        })
+        console.log(result.errno)
+        if (result.errno === 0) {
+          localStorage.isLogin = true
+          router.push({ name: 'Login' })
+          showToast('登陸成功')
+        } else {
+          showToast('请求失败')
+        }
+      } catch {
+        showToast('请求失败')
+      }
+    }
+
+    return { handleClick, show, toastMessage, showToast, handleRegister, username, password, confirmPassword }
   }
 }
 </script>

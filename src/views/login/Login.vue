@@ -2,23 +2,23 @@
   <div class="wrapper">
     <img class="wrapper__img" src="http://www.dell-lee.com/imgs/vue3/user.png" alt="">
     <div class="wrapper__input">
-        <input class="wrapper__input__content" type="text" placeholder="請輸入用戶名" v-model="data.username">
+        <input class="wrapper__input__content" type="text" placeholder="請輸入用戶名" v-model="username">
     </div>
     <div class="wrapper__input">
-        <input class="wrapper__input__content" type="password" placeholder="請輸入密碼" v-model="data.password">
+        <input class="wrapper__input__content" type="password" placeholder="請輸入密碼" v-model="password">
     </div>
     <div class="wrapper__login-button" @click="handleLogin">登入</div>
     <div class="wrapper__login-link">
       <router-link :to="'/register'">立即註冊</router-link>
     </div>
-    <Toast v-if="toastData.showToast" :message="toastData.toastMessage"/>
+    <Toast v-if="show" :message="toastMessage"/>
   </div>
 </template>
 
 <script>
 import { useRouter } from 'vue-router'
 import { post } from '../../utils/request'
-import { reactive } from 'vue'
+import { reactive, toRefs } from 'vue'
 import Toast, { useToastEffect } from '../../components/Toast'
 
 export default {
@@ -30,7 +30,8 @@ export default {
       username: '',
       password: ''
     })
-    const { toastData, showToast } = useToastEffect()
+    const { show, toastMessage, showToast } = useToastEffect()
+    const { username, password } = toRefs(data)
 
     const handleLogin = async () => {
       try {
@@ -38,11 +39,11 @@ export default {
           username: data.username,
           password: data.password
         })
-        console.log(result)
-        if (result?.errno === 0) {
+        if (result.errno === 0) {
           localStorage.isLogin = true
           router.push({ name: 'Home' })
           showToast('登陸成功')
+          console.log(toastMessage)
         } else {
           showToast('登陆失败')
         }
@@ -53,7 +54,9 @@ export default {
     const handleRegisterClick = () => {
       router.push({ name: 'Register' })
     }
-    return { handleLogin, handleRegisterClick, data, toastData }
+    return {
+      username, password, handleLogin, handleRegisterClick, show, toastMessage
+    }
   }
 }
 </script>
