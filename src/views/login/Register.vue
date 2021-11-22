@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <img class="wrapper__img" href="http://www.dell-lee.com/imgs/vue3/user.png" alt="">
+    <img class="wrapper__img" src="http://www.dell-lee.com/imgs/vue3/user.png" alt="">
     <div class="wrapper__input">
         <input class="wrapper__input__coontent" type="text" placeholder="請輸入手機號碼" v-model="username">
     </div>

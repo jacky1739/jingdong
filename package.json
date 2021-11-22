@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "material-design-icons": "^3.0.1",
     "normalize.css": "^8.0.1",
     "save": "^2.4.0",
     "vue": "^3.0.0",
