@@ -17,26 +17,37 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+import { get } from '../../utils/request'
+
 export default {
   name: 'nearby',
   setup () {
-    const nearbyList = [
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/near.png',
-        title: '沃尔玛',
-        tag: ['月售1万+', '起送¥0', '基础运费¥5'],
-        desc: 'vip 尊享满89元减4元运费券 (每月3张)'
-      },
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/near.png',
-        title: '沃尔玛',
-        tag: ['月售1万+', '起送¥0', '基础运费¥5'],
-        desc: 'vip 尊享满89元减4元运费券 (每月3张)'
-      }
-    ]
+    // const nearbyList = [
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/near.png',
+    //     title: '沃尔玛',
+    //     tag: ['月售1万+', '起送¥0', '基础运费¥5'],
+    //     desc: 'vip 尊享满89元减4元运费券 (每月3张)'
+    //   },
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/near.png',
+    //     title: '沃尔玛',
+    //     tag: ['月售1万+', '起送¥0', '基础运费¥5'],
+    //     desc: 'vip 尊享满89元减4元运费券 (每月3张)'
+    //   }
+    // ]
+
+    const nearbyList = ref([])
+    const getNearbyList = async () => {
+      const result = await get('/api/shop/hot-list')
+      console.log(result)
+    }
+
+    getNearbyList()
 
     return {
-      nearbyList
+      nearbyList, getNearbyList
     }
   }
 }
