@@ -2,16 +2,19 @@
   <div>
     <div class="nearby">
       <h3 class="nearby__title">附近店铺</h3>
-      <div class="nearby__item" v-for="item in nearbyList" :key="item">
+      <!-- <div class="nearby__item" v-for="item in nearbyList" :key="item">
         <img class="nearby__item__img" :src="item.imgUrl" alt="">
         <div class="nearby__content">
-          <div class="nearby__content__title">{{ item.title }}</div>
+          <div class="nearby__content__title">{{ item.name }}</div>
           <div class="nearby__content__tags">
-            <span class="nearby__content__tag" v-for="item in item.tag" :key="item">{{ item }}</span>
+            <span class="nearby__content__tag">月售: {{ item.sales }}</span>
+            <span class="nearby__content__tag">起送: {{ item.expressLimit }}</span>
+            <span class="nearby__content__tag">基礎運費: {{ item.expressPrice }}</span>
           </div>
-          <p class="nearby__content__highlight">{{ item.desc }}</p>
+          <p class="nearby__content__highlight">{{ item.slogan }}</p>
         </div>
-      </div>
+      </div> -->
+      <ShopInfo v-for="item in nearbyList" :key="item" :item="item" />
     </div>
   </div>
 </template>
@@ -19,9 +22,11 @@
 <script>
 import { ref } from 'vue'
 import { get } from '../../utils/request'
+import ShopInfo from '../../components/ShopInfo'
 
 export default {
   name: 'nearby',
+  components: { ShopInfo },
   setup () {
     // const nearbyList = [
     //   {
@@ -41,7 +46,11 @@ export default {
     const nearbyList = ref([])
     const getNearbyList = async () => {
       const result = await get('/api/shop/hot-list')
-      console.log(result)
+      console.log(result.data)
+      if (result.errno === 0) {
+        nearbyList.value = result.data
+        console.log(nearbyList.value)
+      }
     }
 
     getNearbyList()
