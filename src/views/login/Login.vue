@@ -2,10 +2,10 @@
   <div class="wrapper">
     <img class="wrapper__img" src="http://www.dell-lee.com/imgs/vue3/user.png" alt="">
     <div class="wrapper__input">
-        <input class="wrapper__input__content" type="text" placeholder="請輸入用戶名" v-model="username">
+      <input class="wrapper__input__content" type="text" placeholder="請輸入用戶名" v-model="username">
     </div>
     <div class="wrapper__input">
-        <input class="wrapper__input__content" type="password" placeholder="請輸入密碼" v-model="password" autocomplete="new-password">
+      <input class="wrapper__input__content" type="password" placeholder="請輸入密碼" v-model="password" autocomplete="new-password">
     </div>
     <div class="wrapper__login-button" @click="handleLogin">登入</div>
     <div class="wrapper__login-link">

@@ -1,7 +1,7 @@
 <template>
   <div class="shop">
     <img class="shop__img" :src="item.imgUrl" alt="" />
-    <div class="shop__content">
+    <div class="shop__content" :class="{ 'shop__content': true, 'shop__content--bordered': hideBorder ? false: true }">
       <div class="shop__content__title">{{ item.name }}</div>
       <div class="shop__content__tags">
         <span class="shop__content__tag">月售: {{ item.sales }}</span>
@@ -16,7 +16,7 @@
 <script>
 export default {
   name: 'ShopInfo',
-  props: ['item']
+  props: ['item', 'hideBorder']
 }
 </script>
 
@@ -26,7 +26,7 @@ export default {
 
 .shop {
   display: flex;
-  padding-top: .12rem 0;
+  margin-bottom: .15rem;
   &__img {
     margin-right: .16rem;
     width: .56rem;
@@ -34,15 +34,17 @@ export default {
   }
   &__content {
     flex: 1;
-    border-bottom: 1px solid $content-bgColor;
-    margin-bottom: .12rem;
+    padding-bottom: .04rem;
+    &--bordered {
+      border-bottom: 1px solid $content-bgColor;
+    }
     &__title {
       line-height: .22rem;
       font-size: .16rem;
       color: $content-fontcolor;
     }
     &__tags {
-      padding-top: .08rem;
+      margin-top: .08rem;
       line-height: .18rem;
       font-size: .13rem;
       color: $content-fontcolor;
@@ -51,11 +53,11 @@ export default {
       margin-right: .16rem;
     }
     &__highlight {
-      padding-top: .08rem 0 0 0;
+      margin: .08rem 0 0 0;
       line-height: .18rem;
       font-size: .13rem;
       color: #E93B3B;
     }
   }
-  }
+}
 </style>
