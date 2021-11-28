@@ -1,24 +1,24 @@
 <template>
   <div>
     <div class="position">
-        <span class="material-icons wrapper__icon">room</span>
-        北京理工大學國防科技元2號樓10層北京理工大學國防科技元2號樓10層
-        <span class="material-icons position__notice">notifications</span>
+      <span class="material-icons wrapper__icon">room</span>
+      北京理工大學國防科技元2號樓10層北京理工大學國防科技元2號樓10層
+      <span class="material-icons position__notice">notifications</span>
+    </div>
+    <div class="search">
+      <span class="material-icons search__icon">search</span>
+      山姆會員商店優惠商品
+    </div>
+    <div class="banner">
+      <img class="banner__img" src="../../../public/images/banner.jpg" alt="">
+    </div>
+    <div class="icons">
+      <div class="icons__item" v-for="item in staticPartList" :key="item">
+        <img class="icons__item__img" :src="item.imgUrl" alt="">
+        <p class="icons__item__desc">{{ item.text }}</p>
       </div>
-      <div class="search">
-        <span class="material-icons search__icon">search</span>
-        山姆會員商店優惠商品
-      </div>
-      <div class="banner">
-        <img class="banner__img" src="../../../public/images/banner.jpg" alt="">
-      </div>
-      <div class="icons">
-        <div class="icons__item" v-for="item in staticPartList" :key="item">
-          <img class="icons__item__img" :src="item.imgUrl" alt="">
-          <p class="icons__item__desc">{{ item.text }}</p>
-        </div>
-      </div>
-      <div class="gap"></div>
+    </div>
+    <div class="gap"></div>
   </div>
 </template>
 
