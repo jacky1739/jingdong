@@ -7,43 +7,50 @@
         <input class="search__content__input" placeholder="請輸入商品名稱">
       </div>
     </div>
-    <ShopInfo :item="data.item" :hideBorder="true" />
+    <ShopInfo :item="item" :hideBorder="true" v-show="item.imgUrl" />
   </div>
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { reactive, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import ShopInfo from '../../components/ShopInfo.vue'
 import { get } from '../../utils/request'
+
+const useShopInfoEffect = () => {
+  // 將取得的回傳資料放於此
+  const data = reactive({ item: {} })
+  // 取得單一商品資訊
+  const getItemData = async () => {
+    const route = useRoute()
+    const result = await get(`/api/shop/${route.params.id}`)
+    if (result.errno === 0 && result.data) {
+      data.item = result.data
+    }
+  }
+  const { item } = toRefs(data)
+  console.log(item)
+  return { item, getItemData }
+}
+
+// 回上一頁
+const useBackRouterEffect = () => {
+  const router = useRouter()
+  const handleBackClick = () => {
+    console.log('click')
+    router.back()
+  }
+  return { handleBackClick }
+}
+
 export default {
   name: 'Shop',
   components: { ShopInfo },
   setup () {
-    const router = useRouter()
-    const route = useRoute()
-
-    const data = reactive({
-      item: {}
-    })
-
-    // 取得單一商品資訊
-    const getItemData = async () => {
-      const result = await get(`/api/shop/${route.params.id}`)
-      console.log(result)
-      if (result.errno === 0 && result.data) {
-        data.item = result.data
-      }
-    }
-
+    const { item, getItemData } = useShopInfoEffect()
+    const { handleBackClick } = useBackRouterEffect()
     getItemData()
-
-    const handleBackClick = () => {
-      console.log('click')
-      router.back()
-    }
-
-    return { data, handleBackClick, getItemData }
+    return { item, handleBackClick, getItemData }
   }
 }
 </script>
