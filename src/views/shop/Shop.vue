@@ -41,6 +41,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../style/variables';
+@import '../../style/mixins';
+
 .wrapper {
   padding: .14rem .18rem;
   &__header {
@@ -71,12 +74,12 @@ export default {
     display: flex;
     flex: 1;
     line-height: .32rem;
-    background: #F5F5F5;
+    background: $search-bgColor;
     border-radius: 16px;
     align-items: center;
     &__icon {
       width: .44rem;
-      color: #B7B7B7;
+      color: $search-fontColor;
       padding: 0 0 0 .08rem;
       display: inline-block;
       text-align: center;
@@ -89,10 +92,10 @@ export default {
       border: none;
       display: block;
       width: 100%;
-      color: #333;
+      color: $content-fontcolor;
       font-size: .14rem;
       &::placeholder {
-        color: #333;
+        color: $content-fontcolor;
       }
     }
   }
