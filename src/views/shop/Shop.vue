@@ -7,35 +7,43 @@
         <input class="search__content__input" placeholder="請輸入商品名稱">
       </div>
     </div>
-    <ShopInfo :item="item" :hideBorder="true" />
+    <ShopInfo :item="data.item" :hideBorder="true" />
   </div>
 </template>
 
 <script>
-import { useRouter } from 'vue-router'
+import { reactive } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import ShopInfo from '../../components/ShopInfo.vue'
-
+import { get } from '../../utils/request'
 export default {
   name: 'Shop',
   components: { ShopInfo },
   setup () {
     const router = useRouter()
-    const item = {
-      _id: '1',
-      name: '沃爾瑪',
-      imgUrl: 'http://www.dell-lee.com/imgs/vue3/near.png',
-      sales: 10000,
-      expressLimit: 0,
-      expressPrice: 5,
-      slogan: 'VIP尊想滿89元減4元運分券'
+    const route = useRoute()
+
+    const data = reactive({
+      item: {}
+    })
+
+    // 取得單一商品資訊
+    const getItemData = async () => {
+      const result = await get(`/api/shop/${route.params.id}`)
+      console.log(result)
+      if (result.errno === 0 && result.data) {
+        data.item = result.data
+      }
     }
+
+    getItemData()
 
     const handleBackClick = () => {
       console.log('click')
       router.back()
     }
 
-    return { item, handleBackClick }
+    return { data, handleBackClick, getItemData }
   }
 }
 </script>
