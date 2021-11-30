@@ -21,12 +21,21 @@ import { post } from '../../utils/request'
 import { reactive, toRefs } from 'vue'
 import Toast, { useToastEffect } from '../../components/Toast'
 
+const useRegisterEffect = () => {
+  const router = useRouter()
+  const handleRegisterClick = () => {
+    router.push({ name: 'Register' })
+  }
+  return { handleRegisterClick }
+}
+
 export default {
   name: 'Login',
   components: { Toast },
   setup () {
     const router = useRouter()
     // 登陸資料
+    const { handleRegisterClick } = useRegisterEffect()
     const data = reactive({
       username: '',
       password: ''
@@ -61,9 +70,6 @@ export default {
       } catch (e) {
         showToast('请求失败')
       }
-    }
-    const handleRegisterClick = () => {
-      router.push({ name: 'Register' })
     }
     return {
       username, password, handleLogin, handleRegisterClick, show, toastMessage
