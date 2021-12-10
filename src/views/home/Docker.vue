@@ -37,7 +37,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../style/variables';
-@import '../../style/mixins';
 
 .docker {
   display: flex;
