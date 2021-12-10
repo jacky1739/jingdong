@@ -19,6 +19,14 @@
     <div class="product">
       <div class="product__item">
         <img class="product__item__img" src="http://www.dell-lee.com/imgs/vue3/near.png" alt="">
+        <div class="product__item__detail">
+          <h4 class="product__item__title">番茄250g/份</h4>
+          <p class="product__item__sales">月售10件</p>
+          <p class="product__item__price">
+            <span class="product__item__yen">¥</span>33.6
+            <span class="product__item__origin">¥66.6</span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -68,6 +76,35 @@ export default {
     &__img {
       height: .68rem;
       width: .68rem;
+      margin-right: .16rem;
+    }
+    &__title {
+      margin: 0;
+      line-height: .2rem;
+      font-size: .14rem;
+      color: #333;
+    }
+    &__sales {
+      margin: .06rem 0;
+      line-height: .16rem;
+      font-size: .12rem;
+      color: #333;
+    }
+    &__price {
+      margin: 0;
+      line-height: .2rem;
+      font-size: .14rem;
+      color: #E93B3B;
+    }
+    &__yen {
+      font-size: .12rem;
+    }
+    &__origin {
+      margin-left: .06rem;
+      line-height: .2rem;
+      font-size: .12rem;
+      color: #999;
+      text-decoration: line-through;
     }
   }
 }
