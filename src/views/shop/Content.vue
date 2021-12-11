@@ -35,7 +35,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../style/variables';
 @import '../../style/mixins';
+
 @include ulolReset;
 
 .content {
@@ -50,7 +52,7 @@ export default {
   overflow-y: scroll;
   height: 100%;
   width: .76rem;
-  background: #F5F5F5;
+  background: $search-bgColor;
   &__item {
     line-height: .4rem;
     font-size: 14px;
@@ -58,7 +60,7 @@ export default {
     color: #333;
     text-align: center;
     &--active {
-      background: #FFF;
+      background: $bgColor;
     }
   }
 }
@@ -69,8 +71,11 @@ export default {
     display: flex;
     padding: .12rem .16rem;
     margin: 0 .16rem;
-    border-bottom: 1px solid #F1F1F1;
+    border-bottom: 1px solid $content-bgColor;
     position: relative;
+    &__detail {
+      overflow: hidden;
+    }
     &__img {
       height: .68rem;
       width: .68rem;
@@ -81,6 +86,7 @@ export default {
       line-height: .2rem;
       font-size: .14rem;
       color: #333;
+      @include ellipsis;
     }
     &__sales {
       margin: .06rem 0;
@@ -101,7 +107,7 @@ export default {
       margin-left: .06rem;
       line-height: .2rem;
       font-size: .12rem;
-      color: #999;
+      color: $light-fontColor;
       text-decoration: line-through;
     }
     .product__number {
@@ -118,13 +124,13 @@ export default {
         text-align: center;
       }
       &__minus {
-        border: .01rem solid #666;
-        color: #666;
+        border: .01rem solid $medium-fontColor;
+        color: $medium-fontColor;
         margin-right: .05rem;
       }
       &__plus {
-        background: #0091FF;
-        color: #FFF;
+        background: $btn-bgColor;
+        color: $bgColor;
         justify-content: center;
         align-content: center;
         margin-left: .05rem;
