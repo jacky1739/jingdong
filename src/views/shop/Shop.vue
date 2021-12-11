@@ -75,7 +75,6 @@ export default {
 }
 .search {
   margin: 0 0 .16rem 0;
-  // background: #000;
   display: flex;
   &__back {
     width: .3rem;
@@ -85,7 +84,6 @@ export default {
     justify-content: center;
     align-items: center;
     color: #B6B6B6;
-    // background: #000;
   }
   &__content {
     display: flex;

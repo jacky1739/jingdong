@@ -1,13 +1,5 @@
 <template>
   <div class="content">
-    <!-- <div class="category">
-      <div class="category__item">全部商品</div>
-      <div class="category__item">秒杀</div>
-      <div class="category__item">新鲜水果</div>
-      <div class="category__item">休闲食品</div>
-      <div class="category__item">时令蔬菜</div>
-      <div class="category__item">肉蛋家禽</div>
-    </div> -->
     <ul class="category">
       <li class="category__item category__item--active">全部商品</li>
       <li class="category__item">秒杀</li>
@@ -26,6 +18,11 @@
             <span class="product__item__yen">¥</span>33.6
             <span class="product__item__origin">¥66.6</span>
           </p>
+        </div>
+        <div class="product__number">
+          <span class="product__number__minus">-</span>
+          0
+          <span class="product__number__plus">+</span>
         </div>
       </div>
     </div>
@@ -73,6 +70,7 @@ export default {
     padding: .12rem .16rem;
     margin: 0 .16rem;
     border-bottom: 1px solid #F1F1F1;
+    position: relative;
     &__img {
       height: .68rem;
       width: .68rem;
@@ -105,6 +103,32 @@ export default {
       font-size: .12rem;
       color: #999;
       text-decoration: line-through;
+    }
+    .product__number {
+      position: absolute;
+      right: 0;
+      bottom: .12rem;
+      &__plus, &__minus {
+        display: inline-block;
+        width: .2rem;
+        height: .2rem;
+        line-height: .18rem;
+        border-radius: 50%;
+        font-size: .2rem;
+        text-align: center;
+      }
+      &__minus {
+        border: .01rem solid #666;
+        color: #666;
+        margin-right: .05rem;
+      }
+      &__plus {
+        background: #0091FF;
+        color: #FFF;
+        justify-content: center;
+        align-content: center;
+        margin-left: .05rem;
+      }
     }
   }
 }
