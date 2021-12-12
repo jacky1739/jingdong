@@ -4,19 +4,16 @@
       <li class="category__item category__item--active">全部商品</li>
       <li class="category__item">秒杀</li>
       <li class="category__item">新鲜水果</li>
-      <li class="category__item">休闲食品</li>
-      <li class="category__item">时令蔬菜</li>
-      <li class="category__item">肉蛋家禽</li>
     </ul>
     <div class="product">
-      <div class="product__item">
+      <div class="product__item" v-for="item in contentList" :key="item._id">
         <img class="product__item__img" src="http://www.dell-lee.com/imgs/vue3/near.png" alt="">
         <div class="product__item__detail">
-          <h4 class="product__item__title">番茄250g/份</h4>
-          <p class="product__item__sales">月售10件</p>
+          <h4 class="product__item__title">{{ item.name }}</h4>
+          <p class="product__item__sales">月售 {{ item.sales }} 件</p>
           <p class="product__item__price">
-            <span class="product__item__yen">¥</span>33.6
-            <span class="product__item__origin">¥66.6</span>
+            <span class="product__item__yen">¥</span>{{ item.price }}
+            <span class="product__item__origin">¥{{ item.oldPrice }}</span>
           </p>
         </div>
         <div class="product__number">
@@ -30,7 +27,28 @@
 </template>
 
 <script>
+import { reactive, toRefs } from 'vue'
+import { get } from '../../utils/request'
+
 export default {
+  name: 'Content',
+  setup () {
+    const data = reactive({ contentList: [1, 2] })
+    const getContentData = async () => {
+      const result = await get('/api/shop/1/products', {
+        tab: 'all'
+      })
+      if (result.errno === 0 && result.data.length) {
+        data.contentList = result.data
+      }
+      console.log(result.data)
+    }
+
+    getContentData()
+    const { contentList } = toRefs(data)
+    console.log(contentList)
+    return { contentList }
+  }
 }
 </script>
 
