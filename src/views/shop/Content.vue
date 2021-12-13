@@ -1,9 +1,10 @@
 <template>
   <div class="content">
     <ul class="category">
-      <li class="category__item category__item--active">全部商品</li>
+      <!-- <li class="category__item category__item--active">全部商品</li>
       <li class="category__item">秒杀</li>
-      <li class="category__item">新鲜水果</li>
+      <li class="category__item">新鲜水果</li> -->
+      <li :class="{ 'category__item': true, 'category__item--active': currentTab === item.tab }" v-for="item in categories" :key="item" @click="() => handleCategoryClick(item.tab)">{{ item.name }}</li>
     </ul>
     <div class="product">
       <div class="product__item" v-for="item in contentList" :key="item._id">
@@ -33,10 +34,23 @@ import { get } from '../../utils/request'
 export default {
   name: 'Content',
   setup () {
-    const data = reactive({ contentList: [1, 2] })
-    const getContentData = async () => {
+    const categories = [{
+      name: '全部商品',
+      tab: 'all'
+    }, {
+      name: '秒杀',
+      tab: 'seckill'
+    }, {
+      name: '新鲜水果',
+      tab: 'fruit'
+    }]
+    const data = reactive({
+      currentTab: categories[0].tab,
+      contentList: []
+    })
+    const getContentData = async (tab) => {
       const result = await get('/api/shop/1/products', {
-        tab: 'all'
+        tab
       })
       if (result.errno === 0 && result.data.length) {
         data.contentList = result.data
@@ -44,10 +58,16 @@ export default {
       console.log(result.data)
     }
 
+    const handleCategoryClick = (tab) => {
+      console.log(tab)
+      getContentData(tab)
+      data.currentTab = tab
+    }
+
     getContentData()
-    const { contentList } = toRefs(data)
+    const { contentList, currentTab } = toRefs(data)
     console.log(contentList)
-    return { contentList }
+    return { contentList, categories, handleCategoryClick, currentTab }
   }
 }
 </script>
