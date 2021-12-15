@@ -9,6 +9,7 @@
     </div>
     <ShopInfo :item="item" :hideBorder="true" v-show="item.imgUrl" />
     <Content />
+    <Cart />
   </div>
 </template>
 
@@ -18,6 +19,7 @@ import { useRouter, useRoute } from 'vue-router'
 import ShopInfo from '../../components/ShopInfo.vue'
 import { get } from '../../utils/request'
 import Content from './Content'
+import Cart from './Cart'
 
 const useShopInfoEffect = () => {
   // 將取得的回傳資料放於此
@@ -47,7 +49,7 @@ const useBackRouterEffect = () => {
 
 export default {
   name: 'Shop',
-  components: { ShopInfo, Content },
+  components: { ShopInfo, Content, Cart },
   setup () {
     const { item, getItemData } = useShopInfoEffect()
     const { handleBackClick } = useBackRouterEffect()
