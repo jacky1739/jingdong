@@ -70,6 +70,7 @@ const useCartEffect = (currentTab) => {
   const store = useStore()
   const { cartList } = toRefs(store.state)
   const addItemToCart = (shopId, productId, productInfo) => {
+    store.commit('addItemToCart', { shopId, productId, productInfo })
     console.log(shopId, productId, productInfo)
   }
 

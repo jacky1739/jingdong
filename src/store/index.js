@@ -20,6 +20,10 @@ export default createStore({
     }
   },
   mutations: {
+    addItemToCart (state, payload) {
+      const { shopId, productId, productInfo } = payload
+      console.log(shopId, productId, productInfo)
+    }
   },
   actions: {
   },
