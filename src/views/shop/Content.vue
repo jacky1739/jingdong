@@ -66,7 +66,7 @@ const useCurrentListEffect = (currentTab, shopId) => {
 }
 
 // 購物車相關邏輯
-const useCartEffect = (currentTab) => {
+const useCartEffect = () => {
   const store = useStore()
   const { cartList } = toRefs(store.state)
   const addItemToCart = (shopId, productId, productInfo) => {
