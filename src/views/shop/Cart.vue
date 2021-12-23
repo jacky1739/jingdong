@@ -3,12 +3,12 @@
     <div class="check">
       <div class="check__icon">
         <img class="check__icon__img" src="http://www.dell-lee.com/imgs/vue3/basket.png" alt="">
-        <div class="check__icon__tag">1</div>
+        <div class="check__icon__tag">{{ total }}</div>
       </div>
       <div class="check__info">
         總計: <span class="check__info__price">&yen;127</span>
       </div>
-      <div class="check__btn" @click="clickBtnCheck">
+      <div class="check__btn">
         去結算
       </div>
     </div>
@@ -16,14 +16,32 @@
 </template>
 
 <script>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
+
 export default {
   name: 'Cart',
   setup () {
-    const clickBtnCheck = () => {
-      console.log('click')
-    }
+    const store = useStore()
+    const route = useRoute()
+    const shopId = route.params.id
+    const cartList = store.state.cartList
 
-    return { clickBtnCheck }
+    const total = computed(() => {
+      const productList = cartList[shopId]
+      let count = 0
+      console.log(productList)
+      if (productList) {
+        for (const i in productList) {
+          const product = productList[i]
+          count += product.count
+        }
+      }
+      return count
+    })
+
+    return { total }
   }
 }
 </script>
@@ -62,7 +80,7 @@ export default {
       top: 0.04rem;
       right: 0.2rem;
       color: $bgColor;
-      transform: scale(.5);
+      transform: scale(.7);
     }
   }
   &__info {
