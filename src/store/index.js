@@ -18,19 +18,19 @@ export default createStore({
     }
   },
   mutations: {
-    addItemToCart (state, payload) {
+    changeCartItemInfo (state, payload) {
       const { shopId, productId, productInfo } = payload
-      let shopInfo = state.cartList[productId]
-      if (!shopInfo) { shopInfo = {} }
-      let product = shopInfo[productId]
+      let productList = state.cartList[shopId]
+      if (!productList) { productList = {} }
+      let product = productList[productId]
       if (!product) {
         product = productInfo
         product.count = 0
       }
 
-      product.count += 1
-      shopInfo[shopId] = product
-      state.cartList[productId] = shopInfo
+      product.count = product.count + payload.num
+      productList[productId] = product
+      state.cartList = productList
     }
   },
   actions: {
