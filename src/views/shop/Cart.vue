@@ -6,7 +6,7 @@
         <div class="check__icon__tag">{{ total }}</div>
       </div>
       <div class="check__info">
-        總計: <span class="check__info__price">&yen;{{ price }}</span>
+        總計: <span class="check__info__price">&yen; {{ price }}</span>
       </div>
       <div class="check__btn">
         去結算
@@ -20,6 +20,39 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 
+// 獲取購物車訊息邏輯
+const useCartEffect = (shopId, cartList) => {
+  // 購物車數量的計算
+  const total = computed(() => {
+    const productList = cartList[shopId]
+    let count = 0
+    if (productList) {
+      // proxy 是個物件 要先轉乘陣列 才可以使用 forEach
+      for (const i in productList) {
+        const product = productList[i]
+        count += product.count
+      }
+    }
+    return count
+  })
+
+  // 購物車金額的計算
+  const price = computed(() => {
+    const productList = cartList[shopId]
+    let count = 0
+    if (productList) {
+      // proxy 是個物件 要先轉乘陣列 才可以使用 forEach
+      for (const i in productList) {
+        const product = productList[i]
+        count += product.count * product.price
+      }
+    }
+    return count.toFixed(2) // 小數點後第二位四捨五入
+  })
+
+  return { total, price }
+}
+
 export default {
   name: 'Cart',
   setup () {
@@ -28,33 +61,7 @@ export default {
     const shopId = route.params.id
     const cartList = store.state.cartList
 
-    // 購物車數量的計算
-    const total = computed(() => {
-      const productList = cartList[shopId]
-      let count = 0
-      if (productList) {
-        // proxy 是個物件 要先轉乘陣列 才可以使用 forEach
-        for (const i in productList) {
-          const product = productList[i]
-          count += product.count
-        }
-      }
-      return count
-    })
-
-    // 購物車金額的計算
-    const price = computed(() => {
-      const productList = cartList[shopId]
-      let count = 0
-      if (productList) {
-        // proxy 是個物件 要先轉乘陣列 才可以使用 forEach
-        for (const i in productList) {
-          const product = productList[i]
-          count += product.count * product.price
-        }
-      }
-      return count.toFixed(2) // 小數點後第二位四捨五入
-    })
+    const { total, price } = useCartEffect(shopId, cartList)
 
     return { total, price }
   }
@@ -94,9 +101,10 @@ export default {
       border-radius: .1rem;
       font-size: .12rem;
       top: .04rem;
-      left: .3rem;
+      left: .46rem;
       color: $bgColor;
       transform: scale(.5);
+      transform-origin: left center;
     }
   }
   &__info {
