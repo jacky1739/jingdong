@@ -1,5 +1,22 @@
 <template>
   <div class="cart">
+    <div class="product">
+      <div class="product__item" v-for="item in productList" :key="item._id">
+        <img class="product__item__img" :src="item.imgUrl" alt="">
+        <div class="product__item__detail">
+          <h4 class="product__item__title">{{ item.name }}</h4>
+          <p class="product__item__price">
+            <span class="product__item__yen">¥</span>{{ item.price }}
+            <span class="product__item__origin">¥{{ item.oldPrice }}</span>
+          </p>
+        </div>
+        <div class="product__number">
+          <span class="product__number__minus" @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }">-</span>
+          {{ item.count || 0 }}
+          <span class="product__number__plus" @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }">+</span>
+        </div>
+      </div>
+    </div>
     <div class="check">
       <div class="check__icon">
         <img class="check__icon__img" src="http://www.dell-lee.com/imgs/vue3/basket.png" alt="">
@@ -50,7 +67,12 @@ const useCartEffect = (shopId, cartList) => {
     return count.toFixed(2) // 小數點後第二位四捨五入
   })
 
-  return { total, price }
+  const productList = computed(() => {
+    const productList = cartList[shopId] || []
+    return productList
+  })
+
+  return { total, price, productList }
 }
 
 export default {
@@ -61,21 +83,94 @@ export default {
     const shopId = route.params.id
     const cartList = store.state.cartList
 
-    const { total, price } = useCartEffect(shopId, cartList)
+    const { total, price, productList } = useCartEffect(shopId, cartList)
 
-    return { total, price }
+    return { total, price, productList, cartList, shopId }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../../style/variables';
+@import '../../style/mixins';
+
+@include ulolReset;
 
 .cart {
+  // 將 cart 釘在最下面
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
+}
+.product {
+  overflow-y: scroll;
+  flex: 1;
+  background: #FFF;
+  &__item {
+    display: flex;
+    padding: .12rem .16rem;
+    margin: 0 .16rem;
+    border-bottom: 1px solid $content-bgColor;
+    position: relative;
+    &__detail {
+      overflow: hidden;
+    }
+    &__img {
+      height: .46rem;
+      width: .46rem;
+      margin-right: .16rem;
+    }
+    &__title {
+      margin: 0;
+      line-height: .2rem;
+      font-size: .14rem;
+      color: #333;
+      @include ellipsis;
+    }
+    &__price {
+      margin: .06rem 0 0 0;
+      line-height: .2rem;
+      font-size: .14rem;
+      color: #E93B3B;
+    }
+    &__yen {
+      font-size: .12rem;
+    }
+    &__origin {
+      margin-left: .06rem;
+      line-height: .2rem;
+      font-size: .12rem;
+      color: $light-fontColor;
+      text-decoration: line-through;
+    }
+    .product__number {
+      position: absolute;
+      right: 0;
+      bottom: .12rem;
+      &__plus, &__minus {
+        display: inline-block;
+        width: .2rem;
+        height: .2rem;
+        line-height: .18rem;
+        border-radius: 50%;
+        font-size: .2rem;
+        text-align: center;
+      }
+      &__minus {
+        border: .01rem solid $medium-fontColor;
+        color: $medium-fontColor;
+        margin-right: .05rem;
+      }
+      &__plus {
+        background: $btn-bgColor;
+        color: $bgColor;
+        justify-content: center;
+        align-content: center;
+        margin-left: .05rem;
+      }
+    }
+  }
 }
 .check {
   display: flex;
