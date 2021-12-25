@@ -12,7 +12,7 @@
         </div>
         <div class="product__number">
           <span class="product__number__minus" @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }">-</span>
-          <!-- {{ cartList?.[shopId]?.[item._id]?.count || 0 }} -->
+          {{ item.count || 0 }}
           <span class="product__number__plus" @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }">+</span>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default {
 
     const { total, price, productList } = useCartEffect(shopId, cartList)
 
-    return { total, price, productList }
+    return { total, price, productList, cartList, shopId }
   }
 }
 </script>
@@ -106,6 +106,7 @@ export default {
 .product {
   overflow-y: scroll;
   flex: 1;
+  background: #FFF;
   &__item {
     display: flex;
     padding: .12rem .16rem;
@@ -116,8 +117,8 @@ export default {
       overflow: hidden;
     }
     &__img {
-      height: .68rem;
-      width: .68rem;
+      height: .46rem;
+      width: .46rem;
       margin-right: .16rem;
     }
     &__title {
@@ -128,7 +129,7 @@ export default {
       @include ellipsis;
     }
     &__price {
-      margin: 0;
+      margin: .06rem 0 0 0;
       line-height: .2rem;
       font-size: .14rem;
       color: #E93B3B;
