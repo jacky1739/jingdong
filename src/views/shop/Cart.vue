@@ -2,19 +2,21 @@
   <div class="cart">
     <div class="product">
       <div class="product__item" v-for="item in productList" :key="item._id">
-        <img class="product__item__img" :src="item.imgUrl" alt="">
-        <div class="product__item__detail">
-          <h4 class="product__item__title">{{ item.name }}</h4>
-          <p class="product__item__price">
-            <span class="product__item__yen">¥</span>{{ item.price }}
-            <span class="product__item__origin">¥{{ item.oldPrice }}</span>
-          </p>
-        </div>
-        <div class="product__number">
-          <span class="product__number__minus" @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }">-</span>
-          {{ item.count || 0 }}
-          <span class="product__number__plus" @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }">+</span>
-        </div>
+        <template v-if="item.count > 0">
+          <img class="product__item__img" :src="item.imgUrl" alt="">
+          <div class="product__item__detail">
+            <h4 class="product__item__title">{{ item.name }}</h4>
+            <p class="product__item__price">
+              <span class="product__item__yen">¥</span>{{ item.price }}
+              <span class="product__item__origin">¥{{ item.oldPrice }}</span>
+            </p>
+          </div>
+          <div class="product__number">
+            <span class="product__number__minus" @click="() => { changeCartItemInfo(shopId, item._id, item, -1) }">-</span>
+            {{ item.count || 0 }}
+            <span class="product__number__plus" @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }">+</span>
+          </div>
+        </template>
       </div>
     </div>
     <div class="check">
@@ -36,6 +38,7 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
+import { useCommonCartEffect } from './commonCartEffect'
 
 // 獲取購物車訊息邏輯
 const useCartEffect = (shopId, cartList) => {
@@ -82,10 +85,11 @@ export default {
     const route = useRoute()
     const shopId = route.params.id
     const cartList = store.state.cartList
+    const { changeCartItemInfo } = useCommonCartEffect()
 
     const { total, price, productList } = useCartEffect(shopId, cartList)
 
-    return { total, price, productList, cartList, shopId }
+    return { total, price, productList, cartList, shopId, changeCartItemInfo }
   }
 }
 </script>
