@@ -1,8 +1,8 @@
 <template>
   <div class="cart">
     <div class="product">
-      <div class="product__item" v-for="item in productList" :key="item._id">
-        <template v-if="item.count > 0">
+      <template v-for="item in productList" :key="item._id">
+        <div class="product__item" v-if="item.count > 0">
           <img class="product__item__img" :src="item.imgUrl" alt="">
           <div class="product__item__detail">
             <h4 class="product__item__title">{{ item.name }}</h4>
@@ -16,8 +16,8 @@
             {{ item.count || 0 }}
             <span class="product__number__plus" @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }">+</span>
           </div>
-        </template>
-      </div>
+        </div>
+      </template>
     </div>
     <div class="check">
       <div class="check__icon">
