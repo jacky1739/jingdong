@@ -3,6 +3,11 @@
     <div class="product">
       <template v-for="item in productList" :key="item._id">
         <div class="product__item" v-if="item.count > 0">
+          <div class="product__item__checked">
+            <span class="material-icons iconfont">
+              check_circle_outline
+            </span>
+          </div>
           <img class="product__item__img" :src="item.imgUrl" alt="">
           <div class="product__item__detail">
             <h4 class="product__item__title">{{ item.name }}</h4>
@@ -42,6 +47,7 @@ import { useCommonCartEffect } from './commonCartEffect'
 
 // 獲取購物車訊息邏輯
 const useCartEffect = (shopId, cartList) => {
+  const { changeCartItemInfo } = useCommonCartEffect()
   // 購物車數量的計算
   const total = computed(() => {
     const productList = cartList[shopId]
@@ -75,7 +81,7 @@ const useCartEffect = (shopId, cartList) => {
     return productList
   })
 
-  return { total, price, productList }
+  return { total, price, productList, changeCartItemInfo }
 }
 
 export default {
@@ -85,9 +91,7 @@ export default {
     const route = useRoute()
     const shopId = route.params.id
     const cartList = store.state.cartList
-    const { changeCartItemInfo } = useCommonCartEffect()
-
-    const { total, price, productList } = useCartEffect(shopId, cartList)
+    const { total, price, productList, changeCartItemInfo } = useCartEffect(shopId, cartList)
 
     return { total, price, productList, cartList, shopId, changeCartItemInfo }
   }
@@ -148,10 +152,20 @@ export default {
       color: $light-fontColor;
       text-decoration: line-through;
     }
+    &__checked {
+      // line-height: .4rem;
+      display: flex;
+      align-items: center;
+      color: #0091FF;
+      margin-right: .15rem;
+      .iconfont {
+        font-size: .2rem;
+      }
+    }
     .product__number {
       position: absolute;
       right: 0;
-      bottom: .12rem;
+      bottom: .23rem;
       &__plus, &__minus {
         display: inline-block;
         width: .2rem;
