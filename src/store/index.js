@@ -26,9 +26,11 @@ export default createStore({
       if (!product) {
         product = productInfo
         product.count = 0
+        product.check = 0
       }
 
       product.count = product.count + payload.num
+      if (payload.num) { product.check = true }
       if (product.count < 0) { product.count = 0 }
       productList[productId] = product
       state.cartList[shopId] = productList
