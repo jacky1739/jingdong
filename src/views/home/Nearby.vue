@@ -20,7 +20,7 @@ export default {
   setup () {
     const nearbyList = ref([])
     const getNearbyList = async () => {
-      const result = await get('/api/shop/hot-list')
+      const result = await get('/api/shop-hot')
       console.log(result.data)
       if (result.errno === 0) {
         nearbyList.value = result.data

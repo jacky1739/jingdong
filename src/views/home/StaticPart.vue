@@ -15,6 +15,7 @@
     <div class="icons">
       <div class="icons__item" v-for="item in staticPartList" :key="item">
         <img class="icons__item__img" :src="item.imgUrl" alt="">
+        <!-- <img class="icons__item__img" src="../../assets/超市.png" alt=""> -->
         <p class="icons__item__desc">{{ item.text }}</p>
       </div>
     </div>
@@ -26,46 +27,53 @@
 export default {
   name: 'StaticPart',
   setup () {
+    // const staticPartList = [
+    //   {
+    //     imgUrl: '../../assets/超市.png',
+    //     text: '超市便利'
+    //   },
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/菜市场.png',
+    //     text: '菜市场'
+    //   },
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/水果店.png',
+    //     text: '水果店'
+    //   },
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/鲜花.png',
+    //     text: '鲜花'
+    //   },
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/医药健康.png',
+    //     text: '医药健康'
+    //   },
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/家居.png',
+    //     text: '家居'
+    //   },
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/蛋糕.png',
+    //     text: '蛋糕'
+    //   },
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/签到.png',
+    //     text: '签到'
+    //   },
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/大牌免运.png',
+    //     text: '大牌免运'
+    //   },
+    //   {
+    //     imgUrl: 'http://www.dell-lee.com/imgs/vue3/红包.png',
+    //     text: '红包'
+    //   }
+    // ]
+
     const staticPartList = [
       {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/超市.png',
+        imgUrl: '../../assets/超市.png',
         text: '超市便利'
-      },
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/菜市场.png',
-        text: '菜市场'
-      },
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/水果店.png',
-        text: '水果店'
-      },
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/鲜花.png',
-        text: '鲜花'
-      },
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/医药健康.png',
-        text: '医药健康'
-      },
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/家居.png',
-        text: '家居'
-      },
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/蛋糕.png',
-        text: '蛋糕'
-      },
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/签到.png',
-        text: '签到'
-      },
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/大牌免运.png',
-        text: '大牌免运'
-      },
-      {
-        imgUrl: 'http://www.dell-lee.com/imgs/vue3/红包.png',
-        text: '红包'
       }
     ]
 
