@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <img class="wrapper__img" src="http://www.dell-lee.com/imgs/vue3/user.png" alt="">
+    <img class="wrapper__img" src="../../../public/images/编组@2x.png" alt="">
     <div class="wrapper__input">
         <input class="wrapper__input__coontent" type="text" placeholder="請輸入手機號碼" v-model="username">
     </div>
@@ -84,6 +84,11 @@ export default {
   display: grid;
   justify-content: center;
   align-content: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
   &__img {
       display: block;
       margin: 0 auto .4rem auto;
